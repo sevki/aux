@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package pb;
+
+service Aux { rpc Dig(Query) returns (Answer); }
+
+enum Type {
+  A = 0;
+  AAAA = 1;
+  CNAME = 2;
+};
+
+message Query {
+  Type type = 1;
+  string name = 2;
+}
+
+message Answer {
+  Type type = 1;
+  int32 ttl = 2;
+  string name = 3;
+  string data = 4;
+}
